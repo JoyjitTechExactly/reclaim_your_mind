@@ -2,84 +2,123 @@ import 'package:authentication/src/view/widgets/common_ui_ext.dart';
 import 'package:authentication/theme/color/auth_colors.dart';
 import 'package:authentication/theme/extensions/style_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import 'OtpVerifyScreen.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
+    final emailController = TextEditingController();
 
     return Scaffold(
       backgroundColor: AuthColors.backgroundLight,
       body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /*Spacing top*/
-            100.h,
-            /*Back btn*/
-            Container(
-              width: MediaQuery.of(context).size.width,
-              alignment: Alignment.centerLeft,
-              margin: const EdgeInsets.only(left: 10),
-              child: showBackBtn(
-                backBtnListener: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-            /*Spacing*/
+            /* Top Spacing */
             50.h,
-            /*Heading*/
-            Text('Reset Password', style: TextStyle().heading26Blue),
-            /*Spacing*/
-            6.h,
-            /*Sub Heading*/
-            Text(
-              'Enter your email or phone number\nto reset your password',
-              style: TextStyle().subHeadingBlack,
-              textAlign: TextAlign.center,
+
+            /* Back Button */
+            showAppBarBackBtn(
+              context: context,
+              backBtnListener: () => Navigator.pop(context),
             ),
 
-            /*Input Section*/
+            /* Spacing */
+            50.h,
+
+            /* Heading */
+            Center(
+              child: Text(
+                'Reset Password',
+                style: TextStyle().heading26Blue,
+                textAlign: TextAlign.center,
+              ),
+            ),
+
+            /* Subheading */
+            6.h,
+            Center(
+              child: Text(
+                'Enter your email or phone number\nto reset your password',
+                style: TextStyle().subHeadingBlack,
+                textAlign: TextAlign.center,
+              ),
+            ),
+
+            /* Input Section */
+            50.h,
+            Text('Email', style: TextStyle().bodySmall14),
+
+            /* Spacing */
+            8.h,
+
+            /* Email Field */
+            editTextField(
+              textController: emailController,
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.next,
+              hint: 'Enter your email',
+              borderColor: AuthColors.borderColor,
+              textColor: AuthColors.defaultTextColor,
+              error: () => print("Email field is empty"),
+            ),
+
+            /* Spacing */
+            24.h,
+
+            /* Send Reset Code Button */
+            showCustomButton(
+              context: context,
+              text: 'Send Reset Code',
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const OtpVerifyScreen()),
+                )
+              },
+              bgColor: AuthColors.defaultButtonColor,
+              borderRadius: 5,
+            ),
+
+            /* Spacing */
+            42.h,
+
+            /* Footer Information Box */
             Container(
-              margin: EdgeInsets.only(top: 50, left: 20, right: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: AuthColors.borderColor, width: 2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: const EdgeInsets.all(17),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  /*Email*/
-                  Text('Email', style: TextStyle().bodySmall14),
-                  /*Spacing*/
-                  8.h,
-                  /*Email edit field*/
-                  editTextField(
-                    textController: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    hint: 'Enter your email',
-                    borderColor: AuthColors.borderColor,
-                    textColor: AuthColors.defaultTextColor,
-                    error: () {
-                      print("Email field is empty");
-                    },
+                  SvgPicture.asset(
+                    'assets/icons/ic_info.svg',
+                    height: 18,
+                    width: 18,
                   ),
-                  /*Spacing*/
-                  24.h,
-                  /*Sign in btn*/
-                  showCustomButton(
-                    context: context,
-                    text: 'Send Reset Code',
-                    onPressed: () {
-                      print("Send Reset Code");
-                    },
-                    bgColor: AuthColors.defaultButtonColor,
-                    borderRadius: 5,
+                  9.w,
+                  Expanded(
+                    child: Text(
+                      "We'll send you a 6-digit verification code to reset your password securely.",
+                      style: TextStyle().bodySmall14,
+                    ),
                   ),
                 ],
               ),
             ),
+
+            /* Bottom Spacing */
+            39.h,
           ],
         ),
       ),

@@ -2,6 +2,8 @@ import 'package:authentication/theme/extensions/style_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:authentication/theme/color/auth_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:authentication/src/view/screens/auth/SignInScreen.dart';
+import 'package:authentication/src/view/screens/auth/SignUpScreen.dart';
 
 import '../../widgets/common_ui_ext.dart';
 
@@ -17,7 +19,7 @@ class OnboardScreen extends StatelessWidget {
           children: [
             /** Top view */
             Container(
-              height: MediaQuery.of(context).size.height * 0.4,
+              height: MediaQuery.of(context).size.height * 0.35,
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.all(20),
               alignment: Alignment.center,
@@ -64,7 +66,10 @@ class OnboardScreen extends StatelessWidget {
                     context: context,
                     text: 'Create New Account',
                     onPressed: () {
-                      Navigator.pushNamed(context, '/signUp');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const SignUpScreen()),
+                      );
                     },
                     bgColor: AuthColors.defaultButtonColor,
                     borderRadius: 5
@@ -83,7 +88,10 @@ class OnboardScreen extends StatelessWidget {
                       /*Login Btn*/
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/signIn');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => const SignInScreen()),
+                          );
                         },
                         style: TextButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
@@ -102,7 +110,7 @@ class OnboardScreen extends StatelessWidget {
                     ],
                   ),
                   /*Spacing*/
-                  102.h,
+                  59.h,
                   /*Footer section*/
                   Container(
                     width: 288.5,
@@ -125,7 +133,6 @@ class OnboardScreen extends StatelessWidget {
                         ),
                         9.w,
                         Expanded(
-                          // 👈 Prevents overflow
                           child: Text(
                             'Your privacy and safety are our priority. All data is encrypted and secure.',
                             style: TextStyle().bodySmall12,

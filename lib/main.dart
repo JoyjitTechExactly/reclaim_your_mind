@@ -4,6 +4,7 @@ import 'package:reclaim_your_mind/src/view/screens/HomeScreen.dart';
 import 'package:authentication/src/view/screens/auth/SignUpScreen.dart';
 import 'package:authentication/src/view/screens/onboard/OnboardScreen.dart';
 import 'package:authentication/src/view/screens/resetPwd/ResetPasswordScreen.dart';
+import 'package:authentication/src/view/screens/resetPwd/OtpVerifyScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,12 +22,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/onboard',
       routes: {
         '/onboard': (context) => const OnboardScreen(),
         '/login': (context) => const SignInScreen(),
         '/signup': (context) => const SignUpScreen(),
         '/resetPassword': (context) => const ResetPasswordScreen(),
+        '/otpVerify': (context) => const OtpVerifyScreen(),
         '/home': (context) => const HomeScreen(),
       },
     );

@@ -13,7 +13,7 @@ extension TextStyleExtensions on TextStyle {
   );
 
   TextStyle get heading26Blue => copyWith(
-    fontSize: 32,
+    fontSize: 26,
     color: AuthColors.blueTextColor,
     fontWeight: FontWeight.w400,
     fontFamily: 'VarelaRound',
@@ -49,6 +49,13 @@ extension TextStyleExtensions on TextStyle {
 
   TextStyle get subHeadingBlack => copyWith(
     fontSize: 18,
+    color: AuthColors.defaultTextColor,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'VarelaRound',
+  );
+
+  TextStyle get subHeadingBlack16 => copyWith(
+    fontSize: 16,
     color: AuthColors.defaultTextColor,
     fontWeight: FontWeight.w400,
     fontFamily: 'VarelaRound',
