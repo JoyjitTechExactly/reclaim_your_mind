@@ -5,6 +5,7 @@ import 'package:authentication/src/view/screens/auth/SignUpScreen.dart';
 import 'package:authentication/src/view/screens/onboard/OnboardScreen.dart';
 import 'package:authentication/src/view/screens/resetPwd/ResetPasswordScreen.dart';
 import 'package:authentication/src/view/screens/resetPwd/OtpVerifyScreen.dart';
+import 'package:authentication/src/view/screens/resetPwd/SetNewPasswordScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => const SignUpScreen(),
         '/resetPassword': (context) => const ResetPasswordScreen(),
         '/otpVerify': (context) => const OtpVerifyScreen(),
+        '/setNewPassword': (context) => const SetNewPasswordScreen(),
         '/home': (context) => const HomeScreen(),
       },
     );

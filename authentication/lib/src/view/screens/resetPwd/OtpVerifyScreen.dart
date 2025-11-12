@@ -1,5 +1,6 @@
 import 'dart:async';
-import 'package:authentication/src/view/widgets/common_ui_ext.dart';
+import 'package:authentication/src/view/screens/resetPwd/SetNewPasswordScreen.dart';
+import 'package:authentication/src/view/widgets/button_widget.dart';
 import 'package:authentication/theme/color/auth_colors.dart';
 import 'package:authentication/theme/extensions/style_extensions.dart';
 import 'package:flutter/material.dart';
@@ -159,7 +160,11 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
               context: context,
               text: 'Verify Code',
               onPressed: () {
-                _code.length == _otpLength ? _onVerify : null ;
+                _code.length == _otpLength ? _onVerify : null;
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SetNewPasswordScreen()),
+                );
               },
               bgColor: AuthColors.defaultButtonColor,
               borderRadius: 5,
@@ -176,7 +181,10 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                   border: Border.all(color: AuthColors.borderColor, width: 2),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -197,9 +205,10 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                               : null,
                           child: Text(
                             'Resend code',
-                            style: TextStyle()
-                                .bodySmall12
-                                .copyWith(color: AuthColors.defaultButtonColor, decoration: TextDecoration.underline),
+                            style: TextStyle().bodySmall12.copyWith(
+                              color: AuthColors.defaultButtonColor,
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
                         Text('  in  ', style: TextStyle().bodySmall12),

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:authentication/src/view/widgets/common_ui_ext.dart';
+import 'package:authentication/src/view/widgets/button_widget.dart';
 import 'package:authentication/theme/color/auth_colors.dart';
 import 'package:authentication/theme/extensions/style_extensions.dart';
 import 'package:flutter/material.dart';

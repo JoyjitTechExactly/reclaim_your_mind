@@ -1,9 +1,10 @@
-import 'package:authentication/src/view/widgets/common_ui_ext.dart';
+import 'package:authentication/src/view/widgets/button_widget.dart';
 import 'package:authentication/theme/color/auth_colors.dart';
 import 'package:authentication/theme/extensions/style_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../widgets/edit_text_field_widget.dart';
 import 'OtpVerifyScreen.dart';
 
 class ResetPasswordScreen extends StatelessWidget {

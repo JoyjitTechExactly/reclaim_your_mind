@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:authentication/src/view/screens/auth/SignInScreen.dart';
 import 'package:authentication/src/view/screens/auth/SignUpScreen.dart';
 
-import '../../widgets/common_ui_ext.dart';
+import '../../widgets/button_widget.dart';
 
 class OnboardScreen extends StatelessWidget {
   const OnboardScreen({super.key});
@@ -110,7 +110,7 @@ class OnboardScreen extends StatelessWidget {
                     ],
                   ),
                   /*Spacing*/
-                  59.h,
+                  102.h,
                   /*Footer section*/
                   Container(
                     width: 288.5,

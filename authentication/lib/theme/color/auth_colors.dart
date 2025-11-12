@@ -9,5 +9,5 @@ class AuthColors {
   static const Color defaultButtonColor = Color(0xFF477086);
   static const Color secondaryButonColor = Color(0xFFC5DEF2);
   static const Color borderColor = Color(0xFFE5E7EB);
-
+  static const Color validationPasswordColor = Color(0xFF7AB6B9);
 }
