@@ -13,15 +13,15 @@ Widget showAppBarBackBtn({required BuildContext context, required VoidCallback b
   );
 }
 
-/*Common Custom btn */
+/*Common Custom btn*/
 Widget showCustomButton({
   required BuildContext context,
   required VoidCallback onPressed,
   required String text,
-  double textSize = 16,
+  double textSize = 18,
   Color textColor = Colors.white,
   Color bgColor = AuthColors.defaultButtonColor,
-  double borderRadius = 12,
+  double borderRadius = 8,
   double height = 50,
 }) {
   return SizedBox(

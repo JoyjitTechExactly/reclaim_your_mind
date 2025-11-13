@@ -107,127 +107,131 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AuthColors.backgroundLight,
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /* Top Spacing */
-            50.h,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /* Top Spacing */
+              20.h,
 
-            /* Back Button */
-            showAppBarBackBtn(
-              context: context,
-              backBtnListener: () => Navigator.pop(context),
-            ),
-
-            /* Spacing */
-            50.h,
-
-            /* Heading */
-            Center(
-              child: Text(
-                'Verify Your Account',
-                style: TextStyle().heading26Blue,
-                textAlign: TextAlign.center,
+              /* Back Button */
+              showAppBarBackBtn(
+                context: context,
+                backBtnListener: () => Navigator.pop(context),
               ),
-            ),
 
-            /* Subheading */
-            6.h,
-            Center(
-              child: Text(
-                "We've sent a 6-digit verification code to your email. Please enter it below to continue.",
-                style: TextStyle().subHeadingBlack,
-                textAlign: TextAlign.center,
+              /* Spacing */
+              50.h,
+
+              /* Heading */
+              Center(
+                child: Text(
+                  'Verify Your Account',
+                  style: TextStyle().heading26Blue,
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
 
-            /* Spacing After Back Button */
-            50.h,
-
-            /* OTP Boxes */
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(_otpLength, _buildOtpBox),
-            ),
-
-            /* Spacing before Verify */
-            24.h,
-
-            /* Verify Button */
-            showCustomButton(
-              context: context,
-              text: 'Verify Code',
-              onPressed: () {
-                _code.length == _otpLength ? _onVerify : null;
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const SetNewPasswordScreen()),
-                );
-              },
-              bgColor: AuthColors.defaultButtonColor,
-              borderRadius: 5,
-            ),
-
-            /* Spacing before Resend */
-            24.h,
-
-            /* Resend Container */
-            Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: AuthColors.borderColor, width: 2),
-                  borderRadius: BorderRadius.circular(10),
+              /* Subheading */
+              6.h,
+              Center(
+                child: Text(
+                  "We've sent a 6-digit verification code to your email. Please enter it below to continue.",
+                  style: TextStyle().subHeadingBlack,
+                  textAlign: TextAlign.center,
                 ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      "Didn't receive the code?",
-                      style: TextStyle().bodySmall12,
+              ),
+
+              /* Spacing After Back Button */
+              50.h,
+
+              /* OTP Boxes */
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(_otpLength, _buildOtpBox),
+              ),
+
+              /* Spacing before Verify */
+              24.h,
+
+              /* Verify Button */
+              showCustomButton(
+                context: context,
+                text: 'Verify Code',
+                onPressed: () {
+                  _code.length == _otpLength ? _onVerify : null;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const SetNewPasswordScreen(),
                     ),
-                    6.h,
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GestureDetector(
-                          onTap: _canResend
-                              ? () {
-                                  for (final c in _controllers) c.clear();
-                                  _startTimer();
-                                }
-                              : null,
-                          child: Text(
-                            'Resend code',
-                            style: TextStyle().bodySmall12.copyWith(
-                              color: AuthColors.defaultButtonColor,
-                              decoration: TextDecoration.underline,
+                  );
+                },
+                bgColor: AuthColors.defaultButtonColor,
+                borderRadius: 5,
+              ),
+
+              /* Spacing before Resend */
+              24.h,
+
+              /* Resend Container */
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: AuthColors.borderColor, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Didn't receive the code?",
+                        style: TextStyle().bodySmall12,
+                      ),
+                      6.h,
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          GestureDetector(
+                            onTap: _canResend
+                                ? () {
+                                    for (final c in _controllers) c.clear();
+                                    _startTimer();
+                                  }
+                                : null,
+                            child: Text(
+                              'Resend code',
+                              style: TextStyle().bodySmall12.copyWith(
+                                color: AuthColors.defaultButtonColor,
+                                decoration: TextDecoration.underline,
+                              ),
                             ),
                           ),
-                        ),
-                        Text('  in  ', style: TextStyle().bodySmall12),
-                        Text(
-                          _canResend
-                              ? '0:00'
-                              : '0:${_secondsRemaining.toString().padLeft(2, '0')}',
-                          style: TextStyle().bodySmall12,
-                        ),
-                      ],
-                    ),
-                  ],
+                          Text('  in  ', style: TextStyle().bodySmall12),
+                          Text(
+                            _canResend
+                                ? '0:00'
+                                : '0:${_secondsRemaining.toString().padLeft(2, '0')}',
+                            style: TextStyle().bodySmall12,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            /* Bottom Spacing */
-            30.h,
-          ],
+              /* Bottom Spacing */
+              30.h,
+            ],
+          ),
         ),
       ),
     );

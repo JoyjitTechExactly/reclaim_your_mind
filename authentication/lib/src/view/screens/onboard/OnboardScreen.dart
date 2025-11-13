@@ -21,14 +21,17 @@ class OnboardScreen extends StatelessWidget {
             Container(
               height: MediaQuery.of(context).size.height * 0.35,
               width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.all(20),
               alignment: Alignment.center,
-              decoration: const BoxDecoration(color: AuthColors.backgroundDark),
-              child: const Image(
-                image: AssetImage('assets/images/rym_logo.png'),
-                height: 188,
-                width: 165,
-                fit: BoxFit.contain,
+              child: Stack(
+                children: [
+                  /*Top image*/
+                  const Image(
+                    width: double.infinity,
+                    height: double.infinity,
+                    image: AssetImage('assets/images/rym_logo.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ],
               ),
             ),
 
